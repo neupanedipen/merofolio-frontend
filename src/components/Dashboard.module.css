@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", serif;
+}
+
+h2 {
+  text-align: center;
+  font-size: 35px;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+p {
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+  font-weight: 800;
+}
+
+h3 {
+  text-align: center;
+  color: #fff;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px auto;
+  max-width: 1200px;
+}
+
+.investment {
+  background-color: #0088a9;
+}
+
+.profit {
+  background-color: #1ecc63;
+}
+
+.balance {
+  background-color: #e9ecef;
+}
+
+.balance p,
+.balance h3 {
+  color: #000;
+}
+.cards .card {
+  width: 300px;
+  max-width: 300px;
+  margin: 12px;
+  padding: 1.5rem;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 7px 6px 26px -17px rgba(0, 0, 0, 1);
+  cursor: pointer;
+  transition: 0.3s all;
+}
+
+/* Table CSS */
+.assetTable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.styledTable {
+  border-collapse: collapse;
+  margin: 25px 0;
+  width: 70%;
+  min-width: 450px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styledTable thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+
+.styledTable th,
+.styledTable td {
+  padding: 16px 20px;
+}
+
+.styledTable tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styledTable tbody tr:last-of-type {
+  background-color: #f3f3f3;
+  border-bottom: 2px solid #009879;
+}
+
+.styledTable tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
+}

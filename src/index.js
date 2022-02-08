@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import Login from '../src/components/Login'
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<App />} />
+    <Route path="login" element={<Login />} />
+    <Route path="register" element={<Register />} />
+    <Route path="dashboard" element={<Dashboard />} />
+  </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
