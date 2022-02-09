@@ -1,8 +1,30 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import axios from 'axios'
 import Navbar from './Navbar';
 import styles from './Dashboard.module.css'
+import { Chart as ChartJS } from 'chart.js/auto'
+import { Line,CategoryScale } from "react-chartjs-2";
+import Modal from './AddModal';
+
+const data = {
+  labels: ["Jan 1", "Jan 2", "Jan 3", "Jan 5", "Jan 6", "Jan 8", "Jan 11"],
+  datasets: [
+    {
+      label: "Profit/ Loss",
+      data: [22000, 21870, 20200, 24391, 26780, 26311, 24879],
+      fill: false,
+      borderColor: "#742774"
+    }
+  ]
+};
 
 const Dashboard = () => {
+
+    // useEffect(() => {
+    //     axios.get('https://nepstockapi.herokuapp.com/')
+    //     .then(res => console.log(res.data))
+    // }, [])
+
     return (
         <>
             <Navbar/>
@@ -21,7 +43,18 @@ const Dashboard = () => {
                 <p>Current Balance</p>
             </div>
             </div>
+            <div>
+            <h2>Profit/Loss Summary</h2>
+            <Line data={data} 
+            width={800}
+            height={300}
+            options={{ maintainAspectRatio: false, responsive: false }}
+            className={styles.chartBox}            
+            />
+            </div>
+
             <h2>Your Assets</h2>
+            <Modal/>
             <div className={styles.assetTable}>
                 <table className={styles.styledTable}>
                 <thead>

@@ -1,0 +1,95 @@
+.modalWindow {
+  position: fixed;
+  background-color: rgba(239, 239, 239, 0.6);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.modalWindow:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modalWindow > div {
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: white;
+}
+.modalWindow header {
+  font-weight: bold;
+}
+.modalWindow h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+.modalClose {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+.modalClose:hover {
+  color: black;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+}
+.modalWindow > div {
+  border-radius: 1rem;
+}
+.modalWindow div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+small {
+  color: lightgray;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1ecc63;
+  padding: 1em 1.5em;
+  border-radius: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 500;
+}
+
+.btn i {
+  padding-right: 0.3em;
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  position: relative;
+}
+
+select {
+  padding: 10px;
+  margin: 10px;
+  display: block;
+}

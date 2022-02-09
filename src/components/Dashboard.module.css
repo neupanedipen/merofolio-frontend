@@ -10,6 +10,19 @@ h2 {
   font-size: 35px;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  background-color: #0088a9;
+  height: 4px;
+  width: 4vw;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 p {
@@ -63,6 +76,10 @@ h3 {
   transition: 0.3s all;
 }
 
+.card:hover {
+  transform: translateY(-5px);
+}
+
 /* Table CSS */
 .assetTable {
   display: flex;
@@ -101,4 +118,9 @@ h3 {
 .styledTable tbody tr.active-row {
   font-weight: bold;
   color: #009879;
+}
+
+.chartBox {
+  width: 80%;
+  margin: 0 auto;
 }
