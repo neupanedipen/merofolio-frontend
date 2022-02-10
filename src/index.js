@@ -11,6 +11,8 @@ import reportWebVitals from './reportWebVitals';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
+import Forum from './components/Forum';
+import ErrorPage from './components/404';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -20,6 +22,8 @@ ReactDOM.render(
     <Route path="register" element={<Register />} />
     <Route path="dashboard" element={<Dashboard />} />
     <Route path="profile" element={<Profile />} />
+    <Route path="forum" element={<Forum />} />
+    <Route path="*" element={<ErrorPage />} />
   </Routes>
   </BrowserRouter>,
   document.getElementById('root')
