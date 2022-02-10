@@ -1,0 +1,61 @@
+.header {
+  min-height: 86.3vh;
+  background: #009fff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details {
+  text-align: center;
+}
+
+.profilePic {
+  height: 6rem;
+  width: 6rem;
+  object-fit: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.location p {
+  display: inline-block;
+}
+
+.stats {
+  display: flex;
+  margin-top: 1.5rem;
+}
+
+.stats .col4 {
+  width: 20rem;
+  text-align: center;
+}
+
+.stats p {
+  margin-top: 0.8rem;
+}
+
+.heading {
+  font-weight: 400;
+  font-size: 1.3rem;
+  margin: 1rem 0;
+}
+
+.btn {
+  background-color: blue;
+  padding: 10px 30px;
+  margin: 1rem;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: blue;
+}

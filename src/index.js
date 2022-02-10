@@ -10,6 +10,7 @@ import {
 import reportWebVitals from './reportWebVitals';
 import Register from './components/Register';
 import Dashboard from './components/Dashboard';
+import Profile from './components/Profile';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.render(
     <Route path="login" element={<Login />} />
     <Route path="register" element={<Register />} />
     <Route path="dashboard" element={<Dashboard />} />
+    <Route path="profile" element={<Profile />} />
   </Routes>
   </BrowserRouter>,
   document.getElementById('root')
