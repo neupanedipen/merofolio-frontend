@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Navbar from './Navbar'
 import loginBanner from '../images/login.jpeg'
 import styles from './Login.module.css';
@@ -25,7 +26,7 @@ const Register = () => {
                             </label><input type="text" placeholder="Enter your password"/>
                         </div>
                         <button className={styles.loginButton}>Register</button>
-                        <span className={styles.signup}><a href="/login">Already Have an account? ∙ Log In now</a></span>
+                        <span className={styles.signup}><Link to="/login">Already Have an account? ∙ Log In now</Link></span>
                     </div>
                 </div>
             </div>

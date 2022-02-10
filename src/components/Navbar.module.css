@@ -21,6 +21,10 @@ header {
   color: #fff;
 }
 
+.logo a {
+  color: #fff;
+}
+
 .nav__links {
   list-style: none;
   display: flex;

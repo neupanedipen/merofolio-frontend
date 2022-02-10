@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Navbar from './Navbar';
 
 const ErrorPage = () => {
@@ -6,7 +7,7 @@ const ErrorPage = () => {
         <>
             <Navbar/>
             <h2>Page Not Found!</h2>
-            <p style={{color: 'black'}}>Go back to <a href="/">Home Page.</a></p>
+            <p style={{color: 'black'}}>Go back to <Link to="/">Home Page.</Link></p>
         </>
     )
 }
