@@ -1,0 +1,92 @@
+.content {
+  background-color: #0c0d0e;
+  color: #e7e7e7;
+  display: flex;
+  align-items: flex-start;
+  padding: 45px 45px;
+}
+.content h5 {
+  font-weight: 400;
+  font-size: 1.25em;
+  margin-bottom: 12px;
+}
+.content .main {
+  width: calc(100% - 270px);
+  flex-shrink: 0;
+}
+.content .posts {
+  margin: 0;
+  padding: 0;
+  margin-right: 30px;
+}
+.content .posts li {
+  list-style: none;
+  margin: 8px 0;
+}
+.content .posts li a {
+  margin: 1.2rem;
+  color: unset;
+  text-decoration: unset;
+  display: flex;
+  align-items: center;
+  background-color: #111213;
+  border-radius: 5px;
+  padding: 8px 18px;
+  transition: 320ms ease;
+}
+.content .posts li a:hover {
+  background-color: #08090a;
+}
+.content .posts li a .icon {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  margin-right: 18px;
+}
+.content .posts li a .icon i {
+  font-size: 1.5em;
+  color: #2e2f30;
+}
+.content .posts li a .txt {
+  display: flex;
+  flex-direction: column;
+}
+.content .posts li a .txt h5 {
+  font-size: 1.15em;
+  margin-bottom: 4px;
+  color: #e7e7e7;
+}
+.content .posts li a .txt .sub {
+  padding: 16px 0;
+  display: flex;
+  align-items: flex-end;
+}
+.content .posts li a .txt .sub span,
+.content .posts li a .txt .sub strong {
+  font-size: 0.75em;
+  color: #636465;
+  font-weight: 400;
+}
+.content .posts li a .txt .sub .author {
+  color: #25738f;
+}
+
+.content .side {
+  margin: 2rem;
+  width: 270px;
+  flex-shrink: 0;
+}
+.content .side p {
+  color: #5a5a5b;
+  font-size: 0.9em;
+}
+
+.content .side a {
+  color: #fff;
+  position: relative;
+  transition: all 0.5s;
+}
+
+.content .side a:hover {
+  color: #25738f;
+}
