@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merofolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <nav class="nav">
+          <a href="index.html" id="logo">
+            <img src="images/header_logo.png" />
+          </a>
+          <div class="nav-links" id="navlinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+
+            <ul>
+              <li><a href="#how can we help">How can we help you</a></li>
+              <li><a href="#feature">Features</a></li>
+              <li><a href="">Discussion Forum</a></li>
+              <li><a href="">Login</a></li>
+              <li><a href="">Signup</a></li>
+            </ul>
+          </div>
+          <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+      </div>
+    </header>
+    <div class="header"></div>
+    <div class="text-box">
+      <h1>MEROFOLIO</h1>
+      <p>EASY PROFILE MANAGER</p>
+      <a href="" class="btn">Visit Us To Know More</a>
+    </div>
+
+    <!---------------Features ------------------>
+    <section id="feature" class="features">
+      <h1>FEATURES</h1>
+      <p>A detailed look at the features we provide.</p>
+      <div class="row">
+        <div class="course-col">
+          <h3>Portfolio Monitoring</h3>
+          <p>
+            Measure the true performance of your portfolio and check if it is
+            aligned with your goals
+          </p>
+        </div>
+        <div class="course-col">
+          <h3>Alert System</h3>
+          <p>
+            Notify user on reaching the predetermined value on the watchlist
+            section
+          </p>
+        </div>
+        <div class="course-col">
+          <h3>Discussion Forum</h3>
+          <p>
+            Helps new investors to clear their queries related to stock market
+            where anybody familiar can answer the questions.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- HOW CAN WE HELP YOU -->
+    <section id="how can we help" class="help">
+      <h1>How Can We Help You</h1>
+      <p>Do you face any of these problems?<br />Here's how we can help</p>
+
+      <div class="row">
+        <div class="help-col">
+          <img src="images/img1.png" />
+          <h3>
+            "It's a pain to manually keep track of my portfolio in spreadsheets"
+          </h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam
+            earum nihil velit itaque nemo molestiae iusto cumque temporibus quia
+            repellendus at nobis, sunt assumenda facere officia labore
+            dignissimos laboriosam! Veniam.
+          </p>
+        </div>
+        <div class="help-col">
+          <img src="images/img2.png" />
+          <h3>"Portfolio management tools are so expensive!"</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam
+            earum nihil velit itaque nemo molestiae iusto cumque temporibus quia
+            repellendus at nobis, sunt assumenda facere officia labore
+            dignissimos laboriosam! Veniam.
+          </p>
+        </div>
+        <div class="help-col">
+          <img src="images/img3.png" />
+          <h3>"I don't know what stocks to buy"</h3>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam
+            earum nihil velit itaque nemo molestiae iusto cumque temporibus quia
+            repellendus at nobis, sunt assumenda facere officia labore
+            dignissimos laboriosam! Veniam.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Some reviews -->
+
+    <!-- Call to action -->
+    <section class="cta">
+      <h1>MEROFOLIO is free to use</h1>
+      <a href="" class="btn">GET STARTED!!</a>
+    </section>
+
+    <!-- footer -->
+
+    <section class="footer">
+      <h4>copyright&copy;2022 Merofolio.All rights reserved.</h4>
+    </section>
+
+    <script>
+      var navlinks = document.getElementById("navlinks");
+      function showMenu() {
+        navlinks.style.right = "0";
+      }
+      function hideMenu() {
+        navlinks.style.right = "-400px";
+      }
+    </script>
+  </body>
+  <script src="./script.js"></script>
+</html>
