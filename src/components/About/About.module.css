@@ -1,5 +1,5 @@
-.sub-header {
-    height: 60vh;
+.subHeader {
+    height: 70vh;
     width: 100%;
     background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
       url(../../images/home.png);
@@ -8,8 +8,31 @@
     text-align: center;
     color: #fff;
 }
+
+.textBox {
+  width: 90%;
+  color: #fff;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 .text1Box {
     top: 50%;
+  }
+
+.textBox h1{
+    color: #fff;
+    font-size: 3.5rem;
+    /* font-size: 32px; */
+  }
+
+  .row {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
   }
   
 .aboutUs {
@@ -25,12 +48,17 @@
 .aboutCol img {
     width: 100%;
   }
-.aboutCol h2 {
+ .aboutHead {
     padding-top: 0;
+    font-size: 1.8rem;
   }
 .aboutCol p {
     padding: 15px 0 25px;
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: 300;
   }
+
 .btnn {
     display: inline-block;
     text-decoration: none;
@@ -39,6 +67,8 @@
     font-size: 13px;
     background: grey;
     position: relative;
+    /* margin: 0 auto; */
+    margin-left: 10rem;
   
     cursor: pointer;
     border: 1px solid grey;
