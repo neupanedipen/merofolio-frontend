@@ -13,6 +13,7 @@ import Dashboard from './components/Dashboard';
 import Profile from './components/Profile';
 import Forum from './components/Forum';
 import ErrorPage from './components/404';
+import About from './components/About/About';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -23,6 +24,7 @@ ReactDOM.render(
     <Route path="dashboard" element={<Dashboard />} />
     <Route path="profile" element={<Profile />} />
     <Route path="forum" element={<Forum />} />
+    <Route path="about" element={<About />} />
     <Route path="*" element={<ErrorPage />} />
   </Routes>
   </BrowserRouter>,

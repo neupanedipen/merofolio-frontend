@@ -14,9 +14,9 @@ window.onscroll = function () {
 function scrollFunction() {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     headerDom.style.height = "5rem";
-    headerDom.classList.add("nav-background");
+    headerDom.classList.add(`${styles.navBackground}`);
   } else {
     headerDom.style.height = "8rem";
-    headerDom.classList.remove("nav-background");
+    headerDom.classList.remove(`${styles.navBackground}`);
   }
 }

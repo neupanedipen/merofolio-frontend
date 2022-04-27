@@ -1,0 +1,15 @@
+#footer {
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background-color: #0088a9;
+}
+
+#footer .footerText {
+    /* margin-bottom: 25px; */
+    /* margin-top: 20px; */
+    position: sticky;
+    font-weight: 500;
+    color: #fff;
+    z-index: 1000000;
+}

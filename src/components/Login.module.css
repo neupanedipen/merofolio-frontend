@@ -10,6 +10,7 @@
 }
 
 .loginBox {
+  padding-top: 20rem;
   background-color: #fffbfa;
   height: 70vh;
   display: flex;

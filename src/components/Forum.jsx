@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Navbar from './Navbar'
 import styles from './Forum.module.css'
+import Footer from './Footer';
 
 const Forum = () => {
     return (
@@ -76,6 +77,7 @@ const Forum = () => {
                         <h5><Link to="home">Home</Link></h5>
                     </div>
                 </div>
+            <Footer/>    
         </>
     )
 }

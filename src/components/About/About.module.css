@@ -1,0 +1,68 @@
+.sub-header {
+    height: 60vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)),
+      url(../../images/home.png);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+}
+.text1Box {
+    top: 50%;
+  }
+  
+.aboutUs {
+    width: 80%;
+    margin: auto;
+    padding-top: 80px;
+    padding-bottom: 50px;
+  }
+.aboutCol {
+    flex-basis: 48%;
+    padding: 30px 2px;
+  }
+.aboutCol img {
+    width: 100%;
+  }
+.aboutCol h2 {
+    padding-top: 0;
+  }
+.aboutCol p {
+    padding: 15px 0 25px;
+  }
+.btnn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    padding: 12px 34px;
+    font-size: 13px;
+    background: grey;
+    position: relative;
+  
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 20%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  .btnn:hover {
+    border: 1px solid #0088a9;
+    background: #0088a9;
+    transition: 1s;
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    .subHeader {
+      height: 50vh;
+    }
+    .text1Box {
+      top: 40%;
+    }
+  }
+  @media (max-width: 767px) {
+    .subHeader {
+      height: 40vh;
+    }
+    .text1Box {
+      top: 30%;
+    }
+  }
