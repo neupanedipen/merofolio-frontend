@@ -30,6 +30,7 @@ const LiveMarket = () => {
                         <th>Open</th>
                         <th>High</th>
                         <th>Low</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -47,6 +48,7 @@ const LiveMarket = () => {
                             <td>{stock.Open}</td>
                             <td>{stock.High}</td>
                             <td>{stock.Low}</td>
+                            <td><i className={`fa fa-bookmark-o`}></i></td>
                             </tr>                        
                         )
                         })

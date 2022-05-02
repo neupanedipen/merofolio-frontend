@@ -95,6 +95,16 @@ const Dashboard = () => {
                 </tbody>
             </table>
             </div>
+            <h2>Watchlist</h2>
+            <div className={styles.cards}>
+            <div className={`${styles.card} ${styles.investment} ${styles.watchCard}`}>
+                <h3 id={styles.watchlistHead}>MNBBL</h3>
+                <p>LTP: 800</p> 
+                <p>Close: 800</p> 
+                <p>%change: +2</p>
+                <p>Prev Closing: 720</p>
+            </div>
+            </div>            
             <Footer/>
         </div>
     )
