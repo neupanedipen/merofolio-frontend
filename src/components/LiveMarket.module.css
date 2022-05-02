@@ -1,0 +1,44 @@
+.assetTable {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10rem;
+  }
+  
+  .styledTable {
+    border-collapse: collapse;
+    margin: 25px 0;
+    width: 70%;
+    min-width: 450px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .styledTable thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  .styledTable th,
+  .styledTable td {
+    padding: 16px 20px;
+  }
+  
+  .styledTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .styledTable tbody tr:last-of-type {
+    background-color: #f3f3f3;
+    border-bottom: 2px solid #009879;
+  }
+  
+  .styledTable tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+  }
+  
+  .chartBox {
+    width: 80%;
+    margin: 0 auto;
+  }

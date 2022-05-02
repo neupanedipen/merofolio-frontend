@@ -12,7 +12,7 @@ const HelpSec = () => {
 
       <div className={styles.row}>
         <div className={styles.helpCol}>
-          <img src={img1} />
+          <img src={img1} alt="Banner img"/>
           <h3>
             "It's a pain to manually keep track of my portfolio in spreadsheets"
           </h3>
@@ -24,7 +24,7 @@ const HelpSec = () => {
           </p>
         </div>
         <div className={styles.helpCol}>
-          <img src={img2} />
+          <img src={img2} alt="img2"/>
           <h3>"Portfolio management tools are so expensive!"</h3>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam
@@ -34,7 +34,7 @@ const HelpSec = () => {
           </p>
         </div>
         <div className={styles.helpCol}>
-          <img src={img3} />
+          <img src={img3} alt="img3"/>
           <h3>"I don't know what stocks to buy"</h3>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsam

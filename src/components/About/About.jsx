@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './About.module.css'
 import img from '../../images/img1.png'
 import Navbar from '../Navbar'
+import Footer from '../Footer'
+import { Link } from 'react-router-dom';
 
 const About = () => {
     return (
@@ -22,13 +24,14 @@ const About = () => {
                             magnam nihil harum labore adipisci nisi accusamus quia officia atque
                             enim quaerat animi.
                         </p>
-                        <a href="" className={styles.btnn}>EXPLORE NOW</a>
+                        <Link to="/register" className={styles.btnn}>EXPLORE NOW</Link>
                     </div>
                     <div className={styles.aboutCol}>
-                        <img src={img} />
+                        <img src={img} alt="about img"/>
                     </div>
                 </div>
             </section>
+            <Footer/>
         </>
     )
 }

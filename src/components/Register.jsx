@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import Navbar from './Navbar'
 import loginBanner from '../images/login.jpeg'
 import styles from './Login.module.css';
-import Footer from './Footer';
 
 const Register = () => {
     return (

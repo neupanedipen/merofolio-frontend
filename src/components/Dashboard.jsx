@@ -1,10 +1,10 @@
-import React, {useEffect} from 'react';
-import axios from 'axios'
+import React from 'react';
 import Navbar from './Navbar';
 import styles from './Dashboard.module.css'
 import { Chart as ChartJS } from 'chart.js/auto'
-import { Line,CategoryScale } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 import Modal from './AddModal';
+import Footer from './Footer'
 
 const data = {
   labels: ["Jan 1", "Jan 2", "Jan 3", "Jan 5", "Jan 6", "Jan 8", "Jan 11"],
@@ -26,7 +26,7 @@ const Dashboard = () => {
     // }, [])
 
     return (
-        <>
+        <div className={styles.dashboard}>
             <Navbar/>
             <h2>Portfolio Summary</h2>
             <div className={styles.cards}>
@@ -95,7 +95,8 @@ const Dashboard = () => {
                 </tbody>
             </table>
             </div>
-        </>
+            <Footer/>
+        </div>
     )
 }
 

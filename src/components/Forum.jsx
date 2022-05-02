@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import Navbar from './Navbar'
 import styles from './Forum.module.css'
 import Footer from './Footer';
+import ForumForm from './ForumForm';
 
 const Forum = () => {
     return (
@@ -10,7 +11,7 @@ const Forum = () => {
             <Navbar />
                 <div className={styles.content}>
                     <div className={styles.main}>
-                    <h2>Recent Discussions</h2>
+                    <h2 className={styles.forumHead}>Recent Discussions</h2>
                     <ul className={styles.posts}>
                         <li>
                         <a href="#">
@@ -77,6 +78,7 @@ const Forum = () => {
                         <h5><Link to="home">Home</Link></h5>
                     </div>
                 </div>
+                <ForumForm/>
             <Footer/>    
         </>
     )
