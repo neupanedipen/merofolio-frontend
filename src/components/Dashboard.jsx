@@ -5,6 +5,7 @@ import { Chart as ChartJS } from 'chart.js/auto'
 import { Line } from "react-chartjs-2";
 import Modal from './AddModal';
 import Footer from './Footer'
+import WatchList from './WatchList';
 
 const data = {
   labels: ["Jan 1", "Jan 2", "Jan 3", "Jan 5", "Jan 6", "Jan 8", "Jan 11"],
@@ -96,15 +97,7 @@ const Dashboard = () => {
             </table>
             </div>
             <h2>Watchlist</h2>
-            <div className={styles.cards}>
-            <div className={`${styles.card} ${styles.investment} ${styles.watchCard}`}>
-                <h3 id={styles.watchlistHead}>MNBBL</h3>
-                <p>LTP: 800</p> 
-                <p>Close: 800</p> 
-                <p>%change: +2</p>
-                <p>Prev Closing: 720</p>
-            </div>
-            </div>            
+            <WatchList/>
             <Footer/>
         </div>
     )

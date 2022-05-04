@@ -19,10 +19,9 @@ const About = () => {
                     <div className={styles.aboutCol}>
                         <h2 className={styles.aboutHead}>EASY PROFILE MANAGER</h2>
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae
-                            asperiores tenetur tempora, earum dicta ipsam, aperiam, explicabo
-                            magnam nihil harum labore adipisci nisi accusamus quia officia atque
-                            enim quaerat animi.
+                        With the increase in interest of the public on the stock market recently, a stock portfolio tracker is an essential tool that every investor needs to know about. A proper portfolio tracker tool can help the investors create a correct investing and trading plan, make essential decisions regarding the stock transactions. Merofolio, a stock portfolio tracker, is a progressive web application that will suit investors who want to monitor their portfolio's true performance with minimal hassle. There are many tools to support their investing journey, like market update emails, alerts, discussion forums and watchlists. All an investor needs to do is enter their transactions whenever they buy or sell stocks. It is targeted to Nepal Stock Market Investors.
+
+
                         </p>
                         <Link to="/register" className={styles.btnn}>EXPLORE NOW</Link>
                     </div>

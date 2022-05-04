@@ -1,0 +1,111 @@
+#data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    background: transparent;
+    /* width: 100vw; */
+    text-align: center;
+    margin: 3rem;
+  }
+  select {
+    display: inline-block;
+  
+    border: 1px solid #0088a9;
+    background: transparent;
+    width: 15rem;
+    height: 3rem;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  button {
+    background-color: #0088a9;
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-size: 13px;
+    padding: 10px 25px;
+    /* margin-top: 20px; */
+    cursor: pointer;
+  }
+  
+
+  .investment p{
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+    margin-left: 1rem;
+  }
+  
+  #watchlistHead{
+    color: #FAFFAF;
+  }
+
+  
+  .cards .card {
+    width: 300px;
+    max-width: 300px;
+    margin: 12px;
+    padding: 1.5rem;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 7px 6px 26px -17px rgba(0, 0, 0, 1);
+    cursor: pointer;
+    transition: 0.3s all;
+  }
+
+  .investment {
+    background-color: #0088a9;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    max-width: 1200px;
+  }
+
+  .tableCell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 30%; */
+    text-align: center;
+    margin-top: 1rem;
+    padding: 5px 0;
+    /* border-right: 1px solid #d6d4d4; */
+    vertical-align: middle;
+
+  }
+
+
+  .icons {
+    color: #0088a9;
+  }
+  .icons .fa {
+    margin: 0 13px;
+    cursor: pointer;
+  }
+
+  a i {
+    transition: all 0.3s linear;
+  }
+  
+  a:hover i {
+    transform: scale(1.5);
+  }
+  
+  .pencil:hover {
+    color: darkgreen;
+  }
+  .trash:hover {
+    color: red;
+  }
+  .bell:hover {
+    color: maroon;
+  }
+  
