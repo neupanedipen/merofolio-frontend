@@ -86,6 +86,10 @@ html {
   /* height: 8rem; */
 }
 
+.logout{
+  background-color: red;
+}
+
 .navBackground {
   background-color: rgb(48, 44, 44);
 }

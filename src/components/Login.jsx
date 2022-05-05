@@ -30,7 +30,7 @@ const Login = (props) => {
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('_id', res.data.publicProfile._id)
             navigate("/dashboard")
-
+            window.location.reload();
         })
             .catch((error) => {
                 console.log(error);
