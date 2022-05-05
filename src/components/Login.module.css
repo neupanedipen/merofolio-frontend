@@ -83,3 +83,13 @@
   color: #0d65c2;
   margin-top: 50px;
 }
+
+.green {
+  color: rgb(3, 190, 3);
+  font-size: 0.9rem;
+}
+
+.red {
+  color: red;
+  font-size: 0.9rem;
+}

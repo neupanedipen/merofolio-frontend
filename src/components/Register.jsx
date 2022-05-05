@@ -1,10 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import Navbar from './Navbar'
 import loginBanner from '../images/login.jpeg'
 import styles from './Login.module.css';
+import axios from 'axios';
 
-const Register = () => {
+const Register = (props) => {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [success, setSuccess] = useState(false);
+    const [errorMessage,setErrormessage]=useState("");
+
+    const handleRegister = async () => {
+        console.log(username, email, password);
+
+        const data = { name: username, email, password }
+        axios.post(`http://localhost:5000/user/signup`, data).then((res) => {
+            if(res.data.errorMessage){
+               return setErrormessage(res.data.errorMessage)
+            }
+                console.log(res.data, "NEW USER CREATED")
+                setSuccess(true);
+                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('_id', res.data.publicProfile._id)
+
+        })
+            .catch((error) => {
+                console.log(error);
+            });
+
+        setUsername("");
+        setEmail("");
+        setPassword("");
+    }
     return (
         <>
             <Navbar />
@@ -15,17 +44,31 @@ const Register = () => {
                         <h1 className={styles.title}>Register</h1>
                         <div className={styles.input}><label htmlFor="">Email
                             </label>
-                            <input type="text" placeholder="Enter your email address"/>
+                            <input type="text" placeholder="Enter your email address" value={email} onChange={e => setEmail(e.target.value)}/>
                         </div>
                         <div className={styles.input}><label htmlFor="">Username
                             </label>
-                            <input type="text" placeholder="Enter your desired username"/>
+                            <input type="text" placeholder="Enter your desired username" value={username} onChange={e => setUsername(e.target.value)}/>
                         </div>
                         <div className={styles.input}>
                             <label htmlFor="">Password
-                            </label><input type="text" placeholder="Enter your password"/>
+                            </label><input type="password" placeholder="Enter your password" value={password} onChange={e => setPassword(e.target.value)}/>
                         </div>
-                        <button className={styles.loginButton}>Register</button>
+                        <button className={styles.loginButton} onClick={handleRegister}>Register</button>
+                        {
+                            success && (
+                                <div>
+                                    <p className={styles.green}>Account created successfully!</p>
+                                </div>
+                            )
+                        }
+                        {
+                            errorMessage && (
+                                <div>
+                                    <p className={styles.red}>{errorMessage}</p>
+                                </div>
+                            )
+                        }
                         <span className={styles.signup}><Link to="/login">Already Have an account? ∙ Log In now</Link></span>
                     </div>
                 </div>
