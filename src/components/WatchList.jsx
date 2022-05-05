@@ -38,11 +38,11 @@ const WatchList = () => {
                     <div className={`${styles.tableCell} ${styles.lastCell}`}>
 
                         <a className={`${styles.icons} ${styles.trash}`}>
-                            <i className={`fa fa-trash fa-lg ${styles.fa}`} ></i>
+                            <i className={`fa fa-trash fa-lg ${styles.fa} ${styles.trash}`} ></i>
                         </a>
 
                         <a className={`${styles.icons} ${styles.bell}`}>
-                            <i className={`fa fa-bell fa-lg ${styles.fa}`} ></i>
+                            <i className={`fa fa-bell fa-lg ${styles.fa} ${styles.bell}`} ></i>
                         </a>
                     </div>
                 </div>

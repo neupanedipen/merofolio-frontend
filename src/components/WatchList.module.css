@@ -83,10 +83,12 @@
   }
 
 
-  .icons {
-    color: #0088a9;
+  a.icons i {
+    color: #f9d1d1;
   }
+  
   .icons .fa {
+    font-size: 1.6rem;
     margin: 0 13px;
     cursor: pointer;
   }
@@ -95,17 +97,15 @@
     transition: all 0.3s linear;
   }
   
-  a:hover i {
+  a i:hover {
     transform: scale(1.5);
   }
   
-  .pencil:hover {
-    color: darkgreen;
-  }
+
   .trash:hover {
     color: red;
   }
   .bell:hover {
-    color: maroon;
+    color: darkgreen;
   }
   
