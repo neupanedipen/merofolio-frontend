@@ -1,35 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Login from '../src/components/Login'
 import {
   BrowserRouter,
-  Routes,
-  Route
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import Register from './components/Register';
-import Dashboard from './components/Dashboard';
-import Profile from './components/Profile';
-import Forum from './components/Forum';
-import ErrorPage from './components/404';
-import About from './components/About/About';
-import LiveMarket from './components/LiveMarket';
+
+
+
 
 ReactDOM.render(
   <BrowserRouter>
-  <Routes>
-    <Route path="/" element={<App />} />
-    <Route path="login" element={<Login />} />
-    <Route path="register" element={<Register />} />
-    <Route path="dashboard" element={<Dashboard />} />
-    <Route path="profile" element={<Profile />} />
-    <Route path="forum" element={<Forum />} />
-    <Route path="about" element={<About />} />
-    <Route path="market" element={<LiveMarket />} />
-    <Route path="*" element={<ErrorPage />} />
-  </Routes>
-  </BrowserRouter>,
+    <App />
+  </BrowserRouter>
+  ,
   document.getElementById('root')
 );
 

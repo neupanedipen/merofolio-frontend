@@ -1,12 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import Navbar from './Navbar'
 import loginBanner from '../images/login.jpeg'
 import styles from './Login.module.css';
 import axios from 'axios';
+import {userContext} from './Context/UserContext'
 
 const Login = (props) => {
+    const user = useContext(userContext)
+    // user.userId ? console.log("true"):console.log("false");
     let navigate = useNavigate();
+    if(user.userId){
+        navigate("/dashboard")
+    }
     const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
     const [errorMessage, setErrormessage] = useState("");
@@ -14,17 +20,16 @@ const Login = (props) => {
         if (!email || !password){
             alert("Enter both email and password")
         }
-        navigate("/dashboard")
         const data = { email, password }
         axios.post(`http://localhost:5000/user/login`, data).then((res) => {
             if (res.data.errorMessage) {
                 return setErrormessage(res.data.errorMessage)
             }
-            // props.history.push('/dashboard');
             console.log(res.data.publicProfile, "LOGIN SUCESSFULL")
             // setUserSession(res.data.token, res.data.publicProfile);
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('_id', res.data.publicProfile._id)
+            navigate("/dashboard")
 
         })
             .catch((error) => {

@@ -1,11 +1,17 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import React, {useState, useContext} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
 import Navbar from './Navbar'
 import loginBanner from '../images/login.jpeg'
 import styles from './Login.module.css';
 import axios from 'axios';
+import {userContext} from './Context/UserContext'
 
 const Register = (props) => {
+    const user = useContext(userContext);
+    let navigate = useNavigate();
+    if(user.userId){
+        navigate("/dashboard")
+    }
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -18,12 +24,14 @@ const Register = (props) => {
         const data = { name: username, email, password }
         axios.post(`http://localhost:5000/user/signup`, data).then((res) => {
             if(res.data.errorMessage){
-               return setErrormessage(res.data.errorMessage)
+               return setErrormessage(res.data.errorMessage);
             }
                 console.log(res.data, "NEW USER CREATED")
                 setSuccess(true);
+                setErrormessage("")
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('_id', res.data.publicProfile._id)
+                navigate("/dashboard")
 
         })
             .catch((error) => {
