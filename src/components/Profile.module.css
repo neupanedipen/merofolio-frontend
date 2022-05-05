@@ -1,9 +1,14 @@
 .profile{
   padding-top:6rem;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  /* padding-bottom: 1rem; */
 }
 
 .header {
-  min-height: 86.3vh;
+  min-height: 88vh;
   background: #009fff;
   color: white;
   display: flex;
@@ -16,11 +21,22 @@
 }
 
 .profilePic {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
   height: 6rem;
   width: 6rem;
   object-fit: center;
   border-radius: 50%;
   border: 2px solid #fff;
+  position: relative;
+}
+
+.userLetter{
+  position: absolute;
+  top: 30%;
+  left: 40%;
+  translate: transform(-50%, -50%);
 }
 
 .location p {

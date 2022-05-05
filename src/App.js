@@ -3,7 +3,8 @@ import './App.css';
 
 import {
   Routes,
-  Route
+  Route, 
+  Navigate
 } from "react-router-dom";
 import Login from '../src/components/Login'
 import Register from './components/Register';
@@ -36,6 +37,25 @@ function App() {
         <Route path="about" element={<About />} />
         <Route path="market" element={<LiveMarket />} />
         <Route path="*" element={<ErrorPage />} />
+
+        <>
+          {userState.userId && (
+            <>
+            <Route path="/login" element={<Navigate replace to="/dashboard" />} />
+            <Route path="/register" element={<Navigate replace to="/dashboard" />} />
+            </>
+          )}
+        </>
+        <>
+        {
+          (userState.userId === null) && (
+            <>
+              <Route path="/profile" element ={<Navigate replace to="/login"/>}/>
+              <Route path ="/dashboard" element ={<Navigate replace to="/login"/>}/>
+            </>
+          )
+        }
+        </>
       </Routes>
     </userContext.Provider>
   );

@@ -1,23 +1,45 @@
-import React from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import styles from './Profile.module.css'
+import {userContext} from './Context/UserContext';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Profile = () => {
+    let navigate = useNavigate();
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const user = useContext(userContext)
+
+    // console.log(user.userId)
+    // if(user.userId === null){
+    //     navigate("/login")
+    //     // window.location.reload();
+    // }
+    if(user.userId) {
+        axios.get(`http://localhost:5000/user/${user.userId}`)
+        .then(res => {
+            console.log(res.data);
+            setUsername(res.data.name)
+            setEmail(res.data.email)
+        })
+    }
+    
     return (
         <>
             <Navbar/>
             <section class={styles.profile}>
                 <header class={styles.header}>
                     <div class={styles.details}>
-                    <img src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=b38c22a46932485790a3f52c61fcbe5a" alt="John Doe" class={styles.profilePic}/>
-                    <h1 class={styles.heading}>Claire Doe</h1>
+                    <div className={styles.profilePic}><p className={styles.userLetter}>{username.charAt(0).toUpperCase()}</p></div>
+                    <h1 class={styles.heading}>{username}</h1>
                     <div class={styles.location}>
-                        <p>Pokhara, Nepal</p>
+                        <p>{email}</p>
                     </div>
 
                     <div>
-                        <button className={styles.btn}>Edit Profile</button>
+                        <button className={styles.btn}><Link to="/dashboard">Go to Dashboard</Link></button>
                     </div>
 
                     <div class={styles.stats}>
