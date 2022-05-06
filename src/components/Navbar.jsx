@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styles from "./Navbar.module.css"
 import logo from "../images/header_logo.png"
-import axios from 'axios';
 import { userContext } from './Context/UserContext'
 
 const Navbar = () => {

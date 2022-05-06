@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Navbar from './Navbar';
 import styles from './Dashboard.module.css'
 import { Chart as ChartJS } from 'chart.js/auto'
@@ -6,6 +6,9 @@ import { Line } from "react-chartjs-2";
 import Modal from './AddModal';
 import Footer from './Footer'
 import WatchList from './WatchList';
+import {userContext} from './Context/UserContext'
+import { Navigate } from 'react-router-dom';
+import { StocksContext } from './Context/StocksContext';
 
 const data = {
   labels: ["Jan 1", "Jan 2", "Jan 3", "Jan 5", "Jan 6", "Jan 8", "Jan 11"],
@@ -20,6 +23,12 @@ const data = {
 };
 
 const Dashboard = () => {
+    const allstocks = useContext(StocksContext);
+    const user = useContext(userContext);
+    if(user.userId === null){
+        return <Navigate to="/login" replace />;
+    }
+
 
     // useEffect(() => {
     //     axios.get('https://nepstockapi.herokuapp.com/')
@@ -69,30 +78,21 @@ const Dashboard = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>MNBBL</td>
-                        <td>545</td>
-                        <td>50</td>
-                        <td>398</td>
-                        <td>147</td>
-                        <td>+ -</td>
-                    </tr>
-                    <tr>
-                        <td>NICLBL</td>
-                        <td>545</td>
-                        <td>50</td>
-                        <td>398</td>
-                        <td>147</td>
-                        <td>+ -</td>
-                    </tr>
-                    <tr className={styles.activeRow}>
-                        <td>GBBL</td>
-                        <td>600</td>
-                        <td>35</td>
-                        <td>650</td>
-                        <td>50</td>
-                        <td>+-</td>
-                    </tr>
+
+                    {
+                        allstocks.map(stock => {
+                            return (
+                                <tr>
+                                <td>{stock.nameOfCompany}</td>
+                                <td>{stock.close}</td>
+                                <td>{stock.numberOfShares}</td>
+                                <td>{stock.price}</td>
+                                <td>{stock.profit}</td>
+                                <td>+ -</td>
+                            </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </table>
             </div>

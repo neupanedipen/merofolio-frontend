@@ -4,6 +4,8 @@ import styles from './WatchList.module.css'
 const WatchList = () => {
 
     const [options, setOptions] = useState([]);
+    const [value, setValue] = useState("");
+    const [stocks, setStocks] = useState([]);
 
     useEffect(() => {
         axios.get('https://nepstockapi.herokuapp.com/')
@@ -13,17 +15,43 @@ const WatchList = () => {
             })
     }, [])
 
+    useEffect(() => {
+        const config = {
+            headers: {
+              Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+          }
+        axios.get('http://localhost:5000/watchlist', config)
+        .then(res => setStocks(res.data))
+    }, [])
+
+    const handleClick = async () => {
+        // const config = {
+        //     headers: {
+        //       Authorization: 'Bearer ' + localStorage.getItem('token')
+        //     }
+        //   }
+        
+        //   const data = {
+        //       nameOfCompany: value,
+        //       targetPrice: 500
+        //   }
+        
+        // axios.post('http://localhost:5000/watchlist',data, config)
+        // .then(res => console.log(res))
+        console.log("handleclick");
+    }
     return (
         <>
             <div className={styles.container}>
                 <div id={styles.data}>
-                    <select>
+                    <select value={value} onChange={e => setValue(e.currentTarget.value)}>
                         <option value="Select Stock Symbol"></option>
                         {options.map((option, index) => (
                             <option value={option.Symbol} key={index}>{option.Symbol}</option>
                         ))}
                     </select>
-                    <button>Add</button>
+                    <button onClick={handleClick}>Add</button>
                 </div>
             </div>
 
