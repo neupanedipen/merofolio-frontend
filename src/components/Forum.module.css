@@ -94,3 +94,38 @@
 .forumHead{
   color: #fff;
 }
+
+.main #question{
+  /* text-align: left; */
+  font-size: 2rem;
+}
+
+.main #question::before{
+  content: "Q:   ";
+  font-size: 2.2rem;
+}
+
+.SingleQuestion{
+  height: 70vh;
+}
+
+textarea{
+  border: 1px solid blue;
+}
+
+.answer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.textArea{
+  width: 60vw;
+}
+
+.ansBtn {
+  display: block;
+  width: 30vw;
+  margin: 1rem auto;
+}

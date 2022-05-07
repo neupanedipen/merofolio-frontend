@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './WatchList.module.css'
-import {useNavigate} from 'react-router-dom'
+// import {useNavigate} from 'react-router-dom'
 const WatchList = () => {
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
 
     const [options, setOptions] = useState([]);
     const [value, setValue] = useState("");

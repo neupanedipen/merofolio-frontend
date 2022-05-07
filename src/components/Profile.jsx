@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import styles from './Profile.module.css'
 import { userContext } from './Context/UserContext';
 import axios from 'axios';
-import { Link, useNavigate, Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 const Profile = () => {
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const user = useContext(userContext)

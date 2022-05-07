@@ -1,10 +1,9 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, } from 'react';
 import styles from './ForumForm.module.css'
 import axios from 'axios';
 
 const ForumForm = () => {
     const [question, setQuestion] = useState("");
-    const [allQuestions, setQuestions] = useState([]);
     const handleSubmit = (e) => {
         e.preventDefault();
         const config = {

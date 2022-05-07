@@ -10,11 +10,13 @@ import axios from 'axios';
 
 const Forum = () => {
     const [questions, setQuestions] = useState([]);
+    const [name, setName] = useState("");
     useEffect(() => {
         axios.get('http://localhost:5000/discussionForum/question').then(res => setQuestions(res.data))
     }, [])
 
     const user = useContext(userContext)
+
     return (
         <>
             <Navbar />
@@ -24,15 +26,16 @@ const Forum = () => {
                     <ul className={styles.posts}>
                         {
                             questions.map(question => {
+                                axios.get(`http://localhost:5000/user/${question.createdBy}`).then(res => setName(res.data.name))
                                 return (
                                     <li>
-                                        <a href="#">
-                                            <div className={styles.txt}>
+                                        <Link to={`${question._id}`}>
+                                            <div className={styles.txt} key={question._id}>
                                                 <h5>{question.text}</h5>
                                                 <div className={styles.sub}>
-                                                    <strong className={styles.author}>neupanedipen</strong>
+                                                    <strong className={styles.author}>{name}</strong>
                                                     <span>&nbsp;-&nbsp;</span>
-                                                    <span>2nd November 2021</span>
+                                                    <span>{(question.createdAt).toLocaleString()}</span>
                                                     <span>&nbsp;-&nbsp;</span>
                                                     <span>
                                                         <i className={`${styles.fas} ${styles.faComments}`}></i>
@@ -42,7 +45,7 @@ const Forum = () => {
 
                                                 </div>
                                             </div>
-                                        </a>
+                                        </Link>
                                     </li>
                                 )
                             })

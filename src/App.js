@@ -17,6 +17,7 @@ import LiveMarket from './components/LiveMarket';
 import Home from './Home';
 import { userContext } from './components/Context/UserContext'
 import { StocksContext } from './components/Context/StocksContext'
+import SingleQuestion from './components/SingleQuestion';
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="register" element={<Register />} />
           {/* <Route path="dashboard" element={<Dashboard />} /> */}
           {/* <Route path="profile" element={<Profile />} /> */}
+          <Route path="/forum/:id" element={<SingleQuestion/>}/>
           <Route path="forum" element={<Forum />} />
           <Route path="about" element={<About />} />
           <Route path="/profile" element={<Profile />} />
