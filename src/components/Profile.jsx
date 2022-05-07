@@ -16,12 +16,14 @@ const Profile = () => {
         return <Navigate to="/login" replace />;
     }
 
-    axios.get(`http://localhost:5000/user/${user.userId}`)
-    .then(res => {
-        console.log(res.data);
-        setUsername(res.data.name)
-        setEmail(res.data.email)
-    })
+    if (user.userId) {
+        axios.get(`http://localhost:5000/user/${user.userId}`)
+            .then(res => {
+                console.log(res.data);
+                setUsername(res.data.name)
+                setEmail(res.data.email)
+            })
+    }
 
 
 

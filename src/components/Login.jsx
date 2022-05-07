@@ -55,11 +55,11 @@ const Login = (props) => {
                         </div>
                         <div className={styles.input}><label htmlFor="">Email
                             </label>
-                            <input type="email" placeholder="Enter your email address" value={email} onChange={e => setEmail(e.target.value)}/>
+                            <input className={styles.inputF} type="email" placeholder="Enter your email address" value={email} onChange={e => setEmail(e.target.value)}/>
                         </div>
                         <div className={styles.input}>
                             <label htmlFor="">Password
-                            </label><input type="password" placeholder="Enter your password" value={password} onChange={e => setPassword(e.target.value)}/>
+                            </label><input className={styles.inputF} type="password" placeholder="Enter your password" value={password} onChange={e => setPassword(e.target.value)}/>
                         </div>
                         <button className={styles.loginButton} onClick= {handleLogin}>Log in</button>
                         

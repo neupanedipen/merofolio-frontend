@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styles from './WatchList.module.css'
+import {useNavigate} from 'react-router-dom'
 const WatchList = () => {
+    let navigate = useNavigate();
 
     const [options, setOptions] = useState([]);
     const [value, setValue] = useState("");
     const [stocks, setStocks] = useState([]);
+    const [targetPrice, setTargetPrice] = useState();
 
     useEffect(() => {
         axios.get('https://nepstockapi.herokuapp.com/')
@@ -18,28 +21,34 @@ const WatchList = () => {
     useEffect(() => {
         const config = {
             headers: {
-              Authorization: 'Bearer ' + localStorage.getItem('token')
+                Authorization: 'Bearer ' + localStorage.getItem('token')
             }
-          }
+        }
         axios.get('http://localhost:5000/watchlist', config)
-        .then(res => setStocks(res.data))
+            .then(res => setStocks(res.data))
     }, [])
 
     const handleClick = async () => {
-        // const config = {
-        //     headers: {
-        //       Authorization: 'Bearer ' + localStorage.getItem('token')
-        //     }
-        //   }
-        
-        //   const data = {
-        //       nameOfCompany: value,
-        //       targetPrice: 500
-        //   }
-        
-        // axios.post('http://localhost:5000/watchlist',data, config)
-        // .then(res => console.log(res))
+        const config = {
+            headers: {
+                Authorization: 'Bearer ' + localStorage.getItem('token')
+            }
+        }
+
+        const data = {
+            nameOfCompany: value,
+            targetPrice
+        }
+
+        axios.post('http://localhost:5000/watchlist', data, config)
+            .then(res => {
+                console.log(res)
+                setOptions("");
+                setValue("")
+                
+            })
         console.log("handleclick");
+        // window.location.reload();
     }
     return (
         <>
@@ -51,17 +60,20 @@ const WatchList = () => {
                             <option value={option.Symbol} key={index}>{option.Symbol}</option>
                         ))}
                     </select>
+                    <input type="number" id={styles.age} placeholder="Set Your Limit" value={targetPrice} onChange={e => setTargetPrice(e.target.value)} />
                     <button onClick={handleClick}>Add</button>
                 </div>
+
             </div>
 
             <div className={styles.cards}>
-                <div className={`${styles.card} ${styles.investment} ${styles.watchCard}`}>
-                    <h3 id={styles.watchlistHead}>MNBBL</h3>
-                    <p>LTP: 800</p>
-                    <p>Close: 800</p>
-                    <p>%change: +2</p>
-                    <p>Prev Closing: 720</p>
+                {
+                    stocks.map(stock => {
+                        return(
+                            <div className={`${styles.card} ${styles.investment} ${styles.watchCard}`}>
+                    <h3 id={styles.watchlistHead} key={stock.id}>{stock.nameOfCompany}</h3>
+                    <p>Target Price: {stock.targetPrice}</p>
+                    <p>Close: {stock.ltp}</p>
 
                     <div className={`${styles.tableCell} ${styles.lastCell}`}>
 
@@ -74,6 +86,9 @@ const WatchList = () => {
                         </a>
                     </div>
                 </div>
+                        )
+                    })
+                }
             </div>
         </>
     )
