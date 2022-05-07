@@ -9,6 +9,8 @@ import { userContext } from './Context/UserContext'
 const SingleQuestion = (props) => {
     // let navigate = useNavigate();
     const user = useContext(userContext);
+    const [showEditForm, setShowEditForm] = useState(false);
+    const [editedQues, setEditedQues] = useState("");
     const [author, setAuthor] = useState("");
     const { id } = useParams();
     const [question, setQuestion] = useState("")
@@ -21,20 +23,37 @@ const SingleQuestion = (props) => {
             })
     }, [])
 
+    const config = {
+        headers: {
+          Authorization: 'Bearer ' + localStorage.getItem('token')
+        }
+      }
+
     const handleSubmit = () => {
         console.log("Submit");
     }
 
     const handleDelete = () => {
-        const config = {
-            headers: {
-              Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
-          }
           window.confirm("Are you sure you wish to delete this item?") && axios.delete(`http://localhost:5000/discussionForum/question/${id}`, config)
         .then(res => {
             console.log(res.data)
             window.location.href="/forum"
+        })
+    }
+
+    const handleEdit = () => {
+        setShowEditForm(!showEditForm);
+        axios.get(`http://localhost:5000/discussionForum/question/${id}`, config)
+        .then(res => setEditedQues(res.data.text))
+    }
+
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        axios.patch(`http://localhost:5000/discussionForum/question/${id}`, {text: editedQues}, config).then((res) => {
+            console.log(res.data)
+            window.location.reload();
+        }).catch((error) => {
+            console.log(error)
         })
     }
 
@@ -46,11 +65,22 @@ const SingleQuestion = (props) => {
                     <h2 className={styles.forumHead}>Forum</h2>
                     <h3 id={styles.question}>{question}{
                         user.userId === author && (
-                            <span className={styles.temperBtns}><i className={`fa fa-pencil-square-o ${styles.edit}`}></i><i onClick={handleDelete} className={`fa fa-trash-o ${styles.delete}`} ></i></span>
+                            <span className={styles.temperBtns}><i className={`fa fa-pencil-square-o ${styles.edit}`} onClick={handleEdit}></i><i onClick={handleDelete} className={`fa fa-trash-o ${styles.delete}`} ></i></span>
                         )
                     }</h3>
                 </div>
             </div>
+            {
+                showEditForm && (
+                    <div className={styles.answer}>
+                        <h2>Edit Question</h2>
+                        <form onSubmit={handleUpdate} className={styles.form}>
+                            <textarea className={styles.textArea} rows={5} columns={5} value={editedQues} onChange={e => setEditedQues(e.target.value)} placeholder="Enter your reply" />
+                            <button className={`${styles.formSubmit} ${styles.ansBtn}`}>Update</button>
+                        </form>
+                    </div>
+                )
+            }
 
             {
                 user.userId && (
