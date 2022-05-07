@@ -169,3 +169,11 @@ textarea{
   font-weight: 400;
   background-color: #636465;
 }
+
+.repBtns {
+  margin-top: 1rem;
+}
+
+.repBtns i {
+  font-size: 1.6rem;
+}

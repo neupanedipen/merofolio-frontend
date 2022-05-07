@@ -67,6 +67,16 @@ const SingleQuestion = (props) => {
         })
     }
 
+    //Actions for Comments
+    const handleRepDelete = e => {
+        window.confirm("Are you sure you wish to delete this item?") && axios.delete(`http://localhost:5000/discussionForum/reply/${e}`, config)
+            .then(res => {
+                console.log(res.data)
+                window.location.reload();
+            })        
+    }
+
+
     return (
         <>
             <Navbar />
@@ -88,6 +98,13 @@ const SingleQuestion = (props) => {
                             <div className={styles.replyBox}>
                                 <div className={styles.replyText}><p>{rep.text}</p></div>
                                 <div><strong className={styles.repAuthor}>{rep.createdBy}</strong></div>
+                                <div className={styles.repBtns}>
+                                {
+                                    user.userId === author && (
+                                        <span className={styles.temperBtns}><i className={`fa fa-pencil-square-o ${styles.edit}`} onClick={handleEdit}></i><i onClick={() => handleRepDelete(rep._id)} className={`fa fa-trash-o ${styles.delete}`} ></i></span>
+                                    )
+                                }
+                                </div>
                             </div>
                         </div>
                     )
