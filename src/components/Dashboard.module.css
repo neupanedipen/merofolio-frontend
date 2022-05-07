@@ -84,6 +84,7 @@ h3 {
 /* Table CSS */
 .assetTable {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -139,3 +140,29 @@ h3 {
   color: #FAFFAF;
 } */
 
+.btnicons{
+  display: inline-block;
+}
+
+.btnicons i {
+  font-size: 1.3rem;
+  margin-left: 0.8rem;
+  cursor: pointer;
+}
+
+#editStocks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#editStocks input {
+  width: 60vw;
+}
+
+.cancel {
+  background-color: red;
+  margin-top: 1rem;
+}

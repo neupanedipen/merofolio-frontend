@@ -18,23 +18,18 @@ const WatchList = () => {
             })
     }, [])
 
-    useEffect(() => {
-        const config = {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
+    const config = {
+        headers: {
+            Authorization: 'Bearer ' + localStorage.getItem('token')
         }
+    }
+
+    useEffect(() => {        
         axios.get('http://localhost:5000/watchlist', config)
             .then(res => setStocks(res.data))
     }, [])
 
     const handleClick = async () => {
-        const config = {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('token')
-            }
-        }
-
         const data = {
             nameOfCompany: value,
             targetPrice
@@ -49,6 +44,17 @@ const WatchList = () => {
             })
         console.log("handleclick");
         // window.location.reload();
+    }
+
+    const handleDelete = (e) => {
+        window.confirm("Are you sure you wish to delete this item?") &&
+            axios.delete(`http://localhost:5000/watchlist/${e}`, config).then((res) => {
+                console.log(res.data)
+                window.location.href = "/dashboard"
+
+            }).catch((error) => {
+                console.log(error)
+            })
     }
     return (
         <>
@@ -78,7 +84,7 @@ const WatchList = () => {
                     <div className={`${styles.tableCell} ${styles.lastCell}`}>
 
                         <a className={`${styles.icons} ${styles.trash}`}>
-                            <i className={`fa fa-trash fa-lg ${styles.fa} ${styles.trash}`} ></i>
+                            <i onClick = {() => handleDelete(stock._id)} className={`fa fa-trash fa-lg ${styles.fa} ${styles.trash}`} ></i>
                         </a>
 
                         <a className={`${styles.icons} ${styles.bell}`}>
