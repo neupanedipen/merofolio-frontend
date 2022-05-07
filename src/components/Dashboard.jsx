@@ -24,6 +24,7 @@ const data = {
 };
 
 const Dashboard = () => {
+    const [sid, setSid] = useState();
     const [editedUnits, setEditedUnits] = useState(0);
     const [editedPrice, setEditedPrice] = useState(0);
     const [editStock, setEditStock] = useState("");
@@ -62,7 +63,11 @@ const Dashboard = () => {
 
     if (user.userId) {
         axios.get(`http://localhost:5000/user/${user.userId}`)
-            .then(res => setProfit(res.data.dashboardProfit))
+            .then(res => {
+                setProfit(res.data.dashboardProfit);
+                setBalance(res.data.totalBalance);
+                setInvestment(res.data.totalInvestment)
+            })
     }
 
     // useEffect(() => {
@@ -86,7 +91,24 @@ const Dashboard = () => {
     const handleEdit = (e) => {
         setShowEdit(!showEdit);
         axios.get(`http://localhost:5000/stocks/${e}`, config).then(res=> {
-            console.log(res.data);
+            setEditStock(res.data.nameOfCompany);
+            setEditedUnits(res.data.numberOfShares);
+            setEditedPrice(res.data.price);
+            setSid(res.data._id);
+        })
+    }
+
+    const handleUpdate = () => {
+        const data = {
+            nameOfCompany: editStock,
+            numberOfShares: editedUnits,
+            price: editedPrice
+        }
+        axios.patch(`http://localhost:5000/stocks/${sid}`, data, config).then((res) => {
+            console.log(res.data)
+            window.location.reload();
+        }).catch((error) => {
+            console.log(error)
         })
     }
 
@@ -138,7 +160,7 @@ const Dashboard = () => {
                         {
                             allstocks.map(stock => {
                                 return (
-                                    <tr>
+                                    <tr key={stock._id}>
                                         <td>{stock.nameOfCompany}</td>
                                         <td>{stock.ltp}</td>
                                         <td>{stock.numberOfShares}</td>
@@ -155,10 +177,10 @@ const Dashboard = () => {
                 {
                     showEdit && (
                         <div id={styles.editStocks}>
-                            <input type="text" id="name" placeholder="Stock Name" />
-                            <input type="number" id="age" placeholder="Set Your Limit" />
-                            <input type="number" id="avPrice" placeholder="Average Price"/>
-                            <button>Update</button> <button className={styles.cancel} onClick={() => setShowEdit(false)}>Cancel</button>
+                            <input type="text" id="name" placeholder="Stock Name" disabled value={editStock}/>
+                            <input type="number" id="age" placeholder="Enter Units" value={editedUnits} onChange={e => setEditedUnits(e.target.value)}/>
+                            <input type="number" id="avPrice" placeholder="Average Price" value={editedPrice} onChange={e => setEditedPrice(e.target.value)}/>
+                            <button onClick={handleUpdate}>Update</button> <button className={styles.cancel} onClick={() => setShowEdit(false)}>Cancel</button>
                         </div>
                     )
                 }

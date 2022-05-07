@@ -24,7 +24,7 @@ const WatchList = () => {
         }
     }
 
-    useEffect(() => {        
+    useEffect(() => {
         axios.get('http://localhost:5000/watchlist', config)
             .then(res => setStocks(res.data))
     }, [])
@@ -40,7 +40,7 @@ const WatchList = () => {
                 console.log(res)
                 setOptions("");
                 setValue("")
-                
+
             })
         console.log("handleclick");
         // window.location.reload();
@@ -75,23 +75,23 @@ const WatchList = () => {
             <div className={styles.cards}>
                 {
                     stocks.map(stock => {
-                        return(
-                            <div className={`${styles.card} ${styles.investment} ${styles.watchCard}`}>
-                    <h3 id={styles.watchlistHead} key={stock.id}>{stock.nameOfCompany}</h3>
-                    <p>Target Price: {stock.targetPrice}</p>
-                    <p>Close: {stock.ltp}</p>
+                        return (
+                            <div key={stock._id} className={`${styles.card} ${styles.investment} ${styles.watchCard}`}>
+                                <h3 id={styles.watchlistHead} >{stock.nameOfCompany}</h3>
+                                <p>Target Price: {stock.targetPrice}</p>
+                                <p>Close: {stock.ltp}</p>
 
-                    <div className={`${styles.tableCell} ${styles.lastCell}`}>
+                                <div className={`${styles.tableCell} ${styles.lastCell}`}>
 
-                        <a className={`${styles.icons} ${styles.trash}`}>
-                            <i onClick = {() => handleDelete(stock._id)} className={`fa fa-trash fa-lg ${styles.fa} ${styles.trash}`} ></i>
-                        </a>
+                                    <a className={`${styles.icons} ${styles.trash}`}>
+                                        <i onClick={() => handleDelete(stock._id)} className={`fa fa-trash fa-lg ${styles.fa} ${styles.trash}`} ></i>
+                                    </a>
 
-                        <a className={`${styles.icons} ${styles.bell}`}>
-                            <i className={`fa fa-bell fa-lg ${styles.fa} ${styles.bell}`} ></i>
-                        </a>
-                    </div>
-                </div>
+                                    <a className={`${styles.icons} ${styles.bell}`}>
+                                        <i className={`fa fa-bell fa-lg ${styles.fa} ${styles.bell}`} ></i>
+                                    </a>
+                                </div>
+                            </div>
                         )
                     })
                 }

@@ -28,9 +28,9 @@ const Forum = () => {
                             questions.map(question => {
                                 axios.get(`http://localhost:5000/user/${question.createdBy}`).then(res => setName(res.data.name))
                                 return (
-                                    <li>
+                                    <li key={question._id}>
                                         <Link to={`${question._id}`}>
-                                            <div className={styles.txt} key={question._id}>
+                                            <div className={styles.txt} >
                                                 <h5>{question.text}</h5>
                                                 <div className={styles.sub}>
                                                     <strong className={styles.author}>{name}</strong>
