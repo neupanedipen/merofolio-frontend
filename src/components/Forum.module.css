@@ -136,3 +136,36 @@ textarea{
   color: #e7e7e7;
   cursor: pointer;
 }
+
+.replyBox{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70vw;
+  border: 1px solid grey;
+  margin: 0 auto;
+  padding: 3rem;
+}
+
+
+.repContainer{
+  /* margin: 2rem; */
+  background-color: #2e2f30;
+  padding: 1rem;
+}
+
+
+
+.replyText p {
+  font-size: 1.2rem;
+  color: #fff;
+  /* background-color: #fff; */
+  font-weight: 300;
+}
+
+.repAuthor{
+  font-size: 0.8rem;
+  font-weight: 400;
+  background-color: #636465;
+}

@@ -15,6 +15,7 @@ const SingleQuestion = (props) => {
     const { id } = useParams();
     const [question, setQuestion] = useState("")
     const [reply, setReply] = useState("");
+    const [replies, setReplies] = useState([]);
     useEffect(() => {
         axios.get(`http://localhost:5000/discussionForum/question/${id}`)
             .then(res => {
@@ -25,31 +26,40 @@ const SingleQuestion = (props) => {
 
     const config = {
         headers: {
-          Authorization: 'Bearer ' + localStorage.getItem('token')
+            Authorization: 'Bearer ' + localStorage.getItem('token')
         }
-      }
+    }
 
-    const handleSubmit = () => {
-        console.log("Submit");
+    useEffect(() => {
+        axios.get(`http://localhost:5000/discussionForum/reply/${id}`).then(res => setReplies(res.data))
+    }, [])
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post(`http://localhost:5000/discussionForum/reply/${id}`, { text: reply }, config).then(res => {
+            console.log(res.data);
+            setReply("");
+            window.location.reload();
+        });
     }
 
     const handleDelete = () => {
-          window.confirm("Are you sure you wish to delete this item?") && axios.delete(`http://localhost:5000/discussionForum/question/${id}`, config)
-        .then(res => {
-            console.log(res.data)
-            window.location.href="/forum"
-        })
+        window.confirm("Are you sure you wish to delete this item?") && axios.delete(`http://localhost:5000/discussionForum/question/${id}`, config)
+            .then(res => {
+                console.log(res.data)
+                window.location.href = "/forum"
+            })
     }
 
     const handleEdit = () => {
         setShowEditForm(!showEditForm);
         axios.get(`http://localhost:5000/discussionForum/question/${id}`, config)
-        .then(res => setEditedQues(res.data.text))
+            .then(res => setEditedQues(res.data.text))
     }
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.patch(`http://localhost:5000/discussionForum/question/${id}`, {text: editedQues}, config).then((res) => {
+        axios.patch(`http://localhost:5000/discussionForum/question/${id}`, { text: editedQues }, config).then((res) => {
             console.log(res.data)
             window.location.reload();
         }).catch((error) => {
@@ -68,8 +78,21 @@ const SingleQuestion = (props) => {
                             <span className={styles.temperBtns}><i className={`fa fa-pencil-square-o ${styles.edit}`} onClick={handleEdit}></i><i onClick={handleDelete} className={`fa fa-trash-o ${styles.delete}`} ></i></span>
                         )
                     }</h3>
-                </div>
+                </div >
             </div>
+
+            {
+                replies.map(rep => {
+                    return (
+                        <div className={styles.repContainer} key={rep._id}>
+                            <div className={styles.replyBox}>
+                                <div className={styles.replyText}><p>{rep.text}</p></div>
+                                <div><strong className={styles.repAuthor}>{rep.createdBy}</strong></div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
             {
                 showEditForm && (
                     <div className={styles.answer}>
