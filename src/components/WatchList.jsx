@@ -38,8 +38,9 @@ const WatchList = () => {
         axios.post('http://localhost:5000/watchlist', data, config)
             .then(res => {
                 console.log(res)
-                setOptions("");
+                // setOptions("");
                 setValue("")
+                window.location.reload();
 
             })
         console.log("handleclick");

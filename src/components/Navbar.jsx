@@ -40,7 +40,11 @@ const Navbar = () => {
               <li><NavLink to="/market">Live Market</NavLink></li>
               {
                 user.userId ? (
+                  <>
+                  <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+                  <li><NavLink to="/profile">Profile</NavLink></li>
                   <li><button className={`${styles.btn} ${styles.logout}`} onClick={handleLogout}>Logout</button></li>
+                  </>
                 ) : (
                   <>
                     <li><NavLink to="/login">Login</NavLink></li>

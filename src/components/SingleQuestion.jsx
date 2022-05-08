@@ -16,11 +16,9 @@ const SingleQuestion = (props) => {
     const [question, setQuestion] = useState("")
     const [reply, setReply] = useState("");
     const [replies, setReplies] = useState([]);
-    const [repAuthor, setRepAuthor]= useState("");
     const [cid, setCid] = useState();
     const [showRepForm, setShowRepForm] = useState(false);
     const [editedRep, setEditedRep] = useState("")
-    const [commentor, setCommentor] = useState("");
     useEffect(() => {
         axios.get(`http://localhost:5000/discussionForum/question/${id}`)
             .then(res => {
