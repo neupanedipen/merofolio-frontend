@@ -19,6 +19,7 @@ import { userContext } from './components/Context/UserContext'
 import { StocksContext } from './components/Context/StocksContext'
 import { ForumContext } from './components/Context/ForumContext'
 import SingleQuestion from './components/SingleQuestion';
+import ForgetPass from './components/ForgetPass';
 
 function App() {
 
@@ -63,6 +64,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="/forget-password" element={<ForgetPass/>}/>
             {/* <Route path="dashboard" element={<Dashboard />} /> */}
             {/* <Route path="profile" element={<Profile />} /> */}
             <Route path="/forum/:id" element={<SingleQuestion />} />

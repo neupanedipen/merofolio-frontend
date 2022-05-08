@@ -63,7 +63,7 @@ const Login = (props) => {
                         </div>
                         <button className={styles.loginButton} onClick= {handleLogin}>Log in</button>
                         
-                        <span className={styles.signup}><Link to="/register">Can’t log in? ∙ Sign up for an account</Link></span>
+                        <span className={styles.signup}><Link to="/register">Can’t log in? ∙ Sign up for an account</Link><div><Link to="/forget-password">Forgot Password</Link></div></span>
                     </div>
                 </div>
             </div>
