@@ -16,6 +16,11 @@ const SingleQuestion = (props) => {
     const [question, setQuestion] = useState("")
     const [reply, setReply] = useState("");
     const [replies, setReplies] = useState([]);
+    const [repAuthor, setRepAuthor]= useState("");
+    const [cid, setCid] = useState();
+    const [showRepForm, setShowRepForm] = useState(false);
+    const [editedRep, setEditedRep] = useState("")
+    const [commentor, setCommentor] = useState("");
     useEffect(() => {
         axios.get(`http://localhost:5000/discussionForum/question/${id}`)
             .then(res => {
@@ -24,6 +29,8 @@ const SingleQuestion = (props) => {
             })
     }, [])
 
+    
+
     const config = {
         headers: {
             Authorization: 'Bearer ' + localStorage.getItem('token')
@@ -31,7 +38,9 @@ const SingleQuestion = (props) => {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/discussionForum/reply/${id}`).then(res => setReplies(res.data))
+        axios.get(`http://localhost:5000/discussionForum/reply/${id}`).then(res => {
+            setReplies(res.data);
+        })
     }, [])
 
     const handleSubmit = (e) => {
@@ -68,12 +77,38 @@ const SingleQuestion = (props) => {
     }
 
     //Actions for Comments
+    // const findRepAuthor = async (e) => {
+    //     const aut = await axios.get(`http://localhost:5000/reply/${e}`).then(res => res.data.createdBy);
+    //     console.log(aut);
+    // }
+
     const handleRepDelete = e => {
         window.confirm("Are you sure you wish to delete this item?") && axios.delete(`http://localhost:5000/discussionForum/reply/${e}`, config)
             .then(res => {
                 console.log(res.data)
                 window.location.reload();
             })        
+    }
+
+    const handleRepEdit = (e) => {
+        setCid(e)
+        setShowRepForm(!showRepForm);
+        axios.get(`http://localhost:5000/reply/${e}`, config)
+            .then(res => {
+                setEditedRep(res.data.text);
+            })
+    }
+
+    
+
+    const handleRepUpdate = (e) => {
+        e.preventDefault();
+        axios.patch(`http://localhost:5000/discussionForum/reply/${cid}`, { text: editedRep }, config).then((res) => {
+            console.log(res.data)
+            window.location.reload();
+        }).catch((error) => {
+            console.log(error)
+        })
     }
 
 
@@ -100,8 +135,8 @@ const SingleQuestion = (props) => {
                                 <div><strong className={styles.repAuthor}>{rep.createdBy}</strong></div>
                                 <div className={styles.repBtns}>
                                 {
-                                    user.userId === author && (
-                                        <span className={styles.temperBtns}><i className={`fa fa-pencil-square-o ${styles.edit}`} onClick={handleEdit}></i><i onClick={() => handleRepDelete(rep._id)} className={`fa fa-trash-o ${styles.delete}`} ></i></span>
+                                    user.userId == rep.createdBy && (
+                                        <span className={styles.temperBtns}><i className={`fa fa-pencil-square-o ${styles.edit}`} onClick={() => handleRepEdit(rep._id)}></i><i onClick={() => handleRepDelete(rep._id)} className={`fa fa-trash-o ${styles.delete}`} ></i></span>
                                     )
                                 }
                                 </div>
@@ -115,7 +150,19 @@ const SingleQuestion = (props) => {
                     <div className={styles.answer}>
                         <h2>Edit Question</h2>
                         <form onSubmit={handleUpdate} className={styles.form}>
-                            <textarea className={styles.textArea} rows={5} columns={5} value={editedQues} onChange={e => setEditedQues(e.target.value)} placeholder="Enter your reply" />
+                            <textarea className={styles.textArea} rows={5} columns={5} value={editedQues} onChange={e => setEditedQues(e.target.value)} placeholder="Edit Question" />
+                            <button className={`${styles.formSubmit} ${styles.ansBtn}`}>Update</button>
+                        </form>
+                    </div>
+                )
+            }
+
+            {
+                showRepForm && (
+                    <div className={styles.answer}>
+                        <h2>Edit Reply</h2>
+                        <form onSubmit={handleRepUpdate} className={styles.form}>
+                            <textarea className={styles.textArea} rows={5} columns={5} value={editedRep} onChange={e => setEditedRep(e.target.value)} placeholder="Edit Reply" />
                             <button className={`${styles.formSubmit} ${styles.ansBtn}`}>Update</button>
                         </form>
                     </div>
