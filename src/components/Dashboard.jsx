@@ -10,6 +10,7 @@ import { userContext } from './Context/UserContext'
 import { Navigate } from 'react-router-dom';
 import { StocksContext } from './Context/StocksContext';
 import axios from 'axios';
+import ProfitAlert from './ProfitAlert';
 
 const data = {
     labels: ["Jan 1", "Jan 2", "Jan 3", "Jan 5", "Jan 6", "Jan 8", "Jan 11"],
@@ -187,6 +188,7 @@ const Dashboard = () => {
             </div>
             <h2>Watchlist</h2>
             <WatchList />
+            <ProfitAlert/>
             <Footer />
         </div>
     )
