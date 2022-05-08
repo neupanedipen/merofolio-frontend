@@ -125,7 +125,7 @@ const Dashboard = () => {
                 </div>
                 <div className={`${styles.card} ${styles.profit} ${styles.loss}`}>
                     <h3 id="profitLoss">{profit}</h3>
-                    <p>Total Profilt/Loss</p>
+                    <p>Total Profit/Loss</p>
                 </div>
                 <div className={`${styles.card} ${styles.balance}`}>
                     <h3 id="balance">{balance}</h3>

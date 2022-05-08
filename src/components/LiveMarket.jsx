@@ -6,6 +6,7 @@ import Footer from './Footer';
 
 const LiveMarket = () => {
     const [stocks, setStocks] = useState([])
+    const [searchTerm, setSearchTerm] = useState("");
     useEffect(() => {
         axios.get('https://nepstockapi.herokuapp.com/')
         .then(res => {
@@ -18,6 +19,9 @@ const LiveMarket = () => {
         <>
             <Navbar/>
             <div className={styles.assetTable}>
+                <div>
+                    <input type="text" placeholder= "Search here" value={searchTerm} onChange={e => setSearchTerm(e.target.value)}/>
+                </div>
                 <table className={styles.styledTable}>
                 <thead>
                     <tr>
@@ -36,7 +40,13 @@ const LiveMarket = () => {
                 <tbody>
                     {
                     
-                        stocks.map(stock => {
+                        stocks.filter(val => {
+                            if(searchTerm == ""){
+                                return val;
+                            }else if(val.Symbol.toLowerCase().includes(searchTerm.toLowerCase())){
+                                return val;
+                            }
+                        }).map(stock => {
                         return (
                             <tr>
                             <td key={stock["S.No"]}>{stock["S.No"]}</td>
