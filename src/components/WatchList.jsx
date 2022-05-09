@@ -79,8 +79,9 @@ const WatchList = () => {
                         return (
                             <div key={stock._id} className={`${styles.card} ${styles.investment} ${styles.watchCard}`}>
                                 <h3 id={styles.watchlistHead} >{stock.nameOfCompany}</h3>
+                                <p style={{"color": "black", "fontSize":"1rem", "fontWeight": "300" }}>You get an email alert when price falls below the target price. </p>
                                 <p>Target Price: {stock.targetPrice}</p>
-                                <p>Close: {stock.ltp}</p>
+                                {/* <p>Close: {stock.ltp}</p> */}
 
                                 <div className={`${styles.tableCell} ${styles.lastCell}`}>
 
